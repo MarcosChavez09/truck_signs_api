@@ -9,17 +9,6 @@ check_env_var() {
     fi
 }
 
-# Function to handle signals
-handle_signal() {
-    echo "Received signal. Shutting down gracefully..."
-    kill -TERM $GUNICORN_PID
-    wait $GUNICORN_PID
-    exit 1
-}
-
-# Set up signal handlers
-trap handle_signal SIGTERM SIGINT
-
 # Check required environment variables
 check_env_var "DOCKER_DB_NAME"
 check_env_var "DOCKER_DB_USER"
@@ -28,16 +17,8 @@ check_env_var "DOCKER_DB_HOST"
 
 echo "Waiting for postgres to connect ..."
 
-# Try to connect to PostgreSQL with a timeout
-TIMEOUT=30
-COUNTER=0
 while ! nc -z $DOCKER_DB_HOST 5432; do
-    sleep 1
-    COUNTER=$((COUNTER + 1))
-    if [ $COUNTER -ge $TIMEOUT ]; then
-        echo "Error: Could not connect to PostgreSQL after $TIMEOUT seconds"
-        exit 1
-    fi
+  sleep 0.1
 done
 
 echo "PostgreSQL is active"
@@ -74,10 +55,6 @@ fi
 
 echo "Postgresql migrations finished"
 
-# Start Gunicorn WSGI server
-echo "Starting Gunicorn WSGI server..."
-gunicorn truck_signs_designs.wsgi:application --bind 0.0.0.0:8020 --workers 3 --timeout 120 --error-logfile - --access-logfile - --capture-output --enable-stdio-inheritance --preload &
-GUNICORN_PID=$!
-
-# Wait for Gunicorn to finish
-wait $GUNICORN_PID
+# Start Django development server
+echo "Starting Django development server..."
+python manage.py runserver 0.0.0.0:8020

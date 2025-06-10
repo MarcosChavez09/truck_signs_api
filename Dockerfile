@@ -20,7 +20,6 @@ RUN apt-get update \
         libffi-dev \
         libpq-dev \
         netcat-openbsd \
-        procps \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
