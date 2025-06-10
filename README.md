@@ -31,11 +31,11 @@ Open your terminal and run the following commands:
 
 With SSH configured (if SSH Keys are provided to GitHub)
 ```
-git clone 
+git clone git@github.com:MarcosChavez09/truck_signs_api.git
 ```
 Classic HTTPS (if no SSH Keys are provided to GitHub)
 ```
-git clone
+git clone https://github.com/MarcosChavez09/truck_signs_api.git
 ```
 After cloning the repository, navigate to:
 
@@ -151,18 +151,24 @@ To restart, just run the `start.sh` script again.
 ```
     ssh -i ~/.ssh/<name_of_your_key25519> <your_user_name>@<ip_server_address>
 ```
-2. Navigate to your `.env` file, find `ALLOWED_HOSTS` and add your `<ip_server_address>`
+2. Create a new folder in your `home` directory and clone this repository there
+```
+    mkdir -p ~/projects
+    cd ~/projects
+    git clone git@github.com:MarcosChavez09/truck_signs_api.git
+```
+3. Navigate to your `.env` file, find `ALLOWED_HOSTS` and add your `<ip_server_address>`
 
 ```
 # .env
 
     ALLOWED_HOSTS=localhost,127.0.0.1,0.0.0.0,<your_server_ip> 
 ``` 
-3. Install Docker on your V-Server if you haven't done so yet. 
+4. Install Docker on your V-Server if you haven't done so yet. 
 
-4. Start the `start.sh` script again.
+5. Start the `start.sh` script again.
 
-5. Visit the link `http://<ip_server_address>:8025/admin`
+6. Visit the link `http://<ip_server_address>:8025/admin`
 
 ## Project Checklist
 
