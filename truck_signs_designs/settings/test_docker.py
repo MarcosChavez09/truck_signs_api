@@ -1,20 +1,17 @@
-import environ
 from .base import *
 
 DEBUG = True
 
-env = environ.Env()
-# reading env file
-environ.Env.read_env()
-
 SECRET_KEY = env("DOCKER_SECRET_KEY")
 DEBUG = True
 
+ALLOWED_HOSTS = ['*']
+
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "http://localhost:8020",
+    "http://127.0.0.1:8020",
 ]
-
-
 
 DATABASES = {
     'default': {
@@ -29,8 +26,6 @@ DATABASES = {
 
 STRIPE_PUBLISHABLE_KEY=env("DOCKER_STRIPE_PUBLISHABLE_KEY")
 STRIPE_SECRET_KEY=env("DOCKER_STRIPE_SECRET_KEY")
-
-
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
