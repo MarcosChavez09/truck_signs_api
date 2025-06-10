@@ -17,14 +17,13 @@ if ! docker info >/dev/null 2>&1; then
     exit 1
 fi
 
-# Set environment variables
-export DOCKER_DB_NAME=truck_signs_db
-export DOCKER_DB_USER=postgres
-export DOCKER_DB_PASSWORD=postgres
-export DOCKER_DB_HOST=truck_signs_db
-export DJANGO_SUPERUSER_USERNAME=admin
-export DJANGO_SUPERUSER_EMAIL=admin@example.com
-export DJANGO_SUPERUSER_PASSWORD=admin
+# Load environment variables from .env file
+if [ -f "truck_signs_designs/settings/.env" ]; then
+    export $(cat truck_signs_designs/settings/.env | grep -v '^#' | xargs)
+else
+    echo "Error: truck_signs_designs/settings/.env file not found"
+    exit 1
+fi
 
 # Function to check if PostgreSQL is ready
 wait_for_postgres() {
