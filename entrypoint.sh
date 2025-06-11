@@ -55,6 +55,6 @@ fi
 
 echo "Postgresql migrations finished"
 
-# Start Django development server
-echo "Starting Django development server..."
-python manage.py runserver 0.0.0.0:8020
+# Start Gunicorn WSGI server
+echo "Starting Gunicorn WSGI server..."
+exec gunicorn truck_signs_designs.wsgi:application --bind 0.0.0.0:8020 --workers 3 --timeout 120

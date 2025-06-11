@@ -2,7 +2,7 @@
 
 ## Description
 
-A repository with a step-by-step guide on how to dockerize a Django app and deploy it to a V-Server.
+A repository with a step-by-step guide on how to dockerize a Django online store app and deploy it to a V-Server.
 
 ## Table of Contents
 
@@ -25,9 +25,7 @@ A repository with a step-by-step guide on how to dockerize a Django app and depl
 
 ## Quick start
 
-Clone this repository to your local machine:
-
-Open your terminal and run the following commands:
+Clone this repository to your local machine. Open your terminal and run the following commands:
 
 With SSH configured (if SSH Keys are provided to GitHub)
 ```
@@ -40,7 +38,7 @@ git clone https://github.com/MarcosChavez09/truck_signs_api.git
 After cloning the repository, navigate to:
 
 ```
-cd baby-tools-shop/babyshop_app
+cd truck_signs_api
 ```
 
 #### Configure the environment variables.
@@ -124,26 +122,28 @@ You can log in as admin with the provided values for the `django superuser`.
 
 ### Starting and stopping the containers.
 
-Stop all containers
+To stop all running containers:
 ```
 docker stop $(docker ps -a -q)
 ```
-Removing all containers
+
+To remove all containers (this will delete all containers, not just the ones from this project):
 ```
 docker rm $(docker ps -a -q)
 ```
 
-To stop and remove specific containers: 
+To stop and remove only the containers used by this project: 
 ```
 docker stop truck-signs-web truck_signs_db
 docker rm truck-signs-web truck_signs_db
 ```
-To remove the data base volume:
+
+To remove the database volume (this will delete all data in the database):
 ```
 docker volume rm truck_signs_postgres_data
 ```
 
-To restart, just run the `start.sh` script again.
+To restart the application, just run the `start.sh` script again.
 
 ### Deploy the app to a V-Server.
 
@@ -168,7 +168,7 @@ To restart, just run the `start.sh` script again.
 
 5. Start the `start.sh` script again.
 
-6. Visit the link `http://<ip_server_address>:8025/admin`
+6. Visit the link `http://<ip_server_address>:8020/admin`
 
 ## Project Checklist
 

@@ -70,6 +70,7 @@ docker run -d \
     -e POSTGRES_USER=$DOCKER_DB_USER \
     -e POSTGRES_PASSWORD=$DOCKER_DB_PASSWORD \
     -v truck_signs_postgres_data:/var/lib/postgresql/data \
+    --restart on-failure \
     -p 5432:5432 \
     postgres:13
 
@@ -92,6 +93,7 @@ docker run -d \
     -e DJANGO_SUPERUSER_USERNAME=$DJANGO_SUPERUSER_USERNAME \
     -e DJANGO_SUPERUSER_EMAIL=$DJANGO_SUPERUSER_EMAIL \
     -e DJANGO_SUPERUSER_PASSWORD=$DJANGO_SUPERUSER_PASSWORD \
+    --restart on-failure \
     -p 8020:8020 \
     truck-signs-api
 
