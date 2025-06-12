@@ -5,8 +5,6 @@ DEBUG = True
 SECRET_KEY = env("DOCKER_SECRET_KEY")
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:8020",

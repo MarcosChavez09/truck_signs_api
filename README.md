@@ -41,72 +41,26 @@ After cloning the repository, navigate to:
 cd truck_signs_api
 ```
 
-#### Configure the environment variables.
-
-Copy the content of the `simple_env_config.env` file that is inside the `truck_signs_designs/settings` folder into a `.env` file:
+Run the `start.sh` script to start the DB and Web containers locally:
 
 ```
-cd truck_signs_designs/settings && cp simple_env_config.env .env
+bash start.sh
 ```
 
-Provide values for the variables: 
-
+or
 ```
-SECRET_KEY=<your_secret_key>
-DB_PASSWORD=<your_db_password>
-DOCKER_DB_PASSWORD=<your_db_password>
-DJANGO_SUPERUSER_USERNAME=<your_admin_user_name>
-DJANGO_SUPERUSER_PASSWORD=<your_admin_password>
-
+./start.sh
 ```
 
-> **_NOTE:_** To generate a secret key, run this one-liner in your terminal and copy the output:
-> ```
->python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+Open the link http://localhost:8020/admin
 
-Create your virtual environment:
-
-On macOS
-```
-    python3 -m venv .venv
-```
-On Linux
-```
-    python -m venv .venv
-```
-
-Activate your venv:
-```
-source .venv/bin/activate
-```
-
-> **_NOTE:_** To deactivate your venv, just type `deactivate` in the command line.
-
-Install dependencies:
-```
-pip install -r requirements.txt
-```
-Run migrations:
-On macOS
-```
-   python3 manage.py migrate
-```
-On Linux
-```
-    python manage.py migrate
-```
-Start the development server:
-```
-   python manage.py runserver
-```
-
-Open the link http://localhost:8000/admin
+You can log in as admin with the provided values in `/truck_signs_designs/settings/.env` for the `django superuser`.
 
 ## Usage
 
-### Create a docker container.
+### Create a docker containers.
 
-To create the docker container use the `start.sh` script, type the following in your terminal:
+To create the docker containers use the `start.sh` script, type the following in your terminal:
 
 ```
 bash start.sh
@@ -118,7 +72,7 @@ or
 ```
 The script will start the web and the database container. Visit http://localhost:8020/admin
 
-You can log in as admin with the provided values for the `django superuser`.
+You can log in as admin with the provided values in `/truck_signs_designs/settings/.env` for the `django superuser`.
 
 ### Starting and stopping the containers.
 
@@ -157,15 +111,16 @@ To restart the application, just run the `start.sh` script again.
     cd ~/projects
     git clone git@github.com:MarcosChavez09/truck_signs_api.git
 ```
-3. Copy the content of the `simple_env_config.env` file that is inside the `truck_signs_designs/settings` folder into a `.env` file. Open your `.env` file, find `ALLOWED_HOSTS` and add your `<ip_server_address>`
+3. Add your server IP to the `simple_env_config.env` file that is inside the `truck_signs_designs/settings` folder. Find `ALLOWED_HOSTS` and add your `<ip_server_address>`.
 
-> **_NOTE:_** Same step as before but this time on your V-Server.
 
 ```
-# .env
+# simple_env_config.env
 
-    ALLOWED_HOSTS=localhost,127.0.0.1,0.0.0.0,<your_server_ip> 
-``` 
+ALLOWED_HOSTS=localhost,127.0.0.1,0.0.0.0,<your_server_ip> 
+```
+
+
 4. Install Docker on your V-Server if you haven't done so yet. 
 
 5. Start the `start.sh` script again.

@@ -17,6 +17,12 @@ if ! docker info >/dev/null 2>&1; then
     exit 1
 fi
 
+# Copy environment config file if .env doesn't exist
+if [ ! -f "truck_signs_designs/settings/.env" ]; then
+    echo "Creating .env file from template..."
+    cp truck_signs_designs/settings/simple_env_config.env truck_signs_designs/settings/.env
+fi
+
 # Load environment variables from .env file
 if [ -f "truck_signs_designs/settings/.env" ]; then
     export $(cat truck_signs_designs/settings/.env | grep -v '^#' | xargs)
