@@ -157,7 +157,9 @@ To restart the application, just run the `start.sh` script again.
     cd ~/projects
     git clone git@github.com:MarcosChavez09/truck_signs_api.git
 ```
-3. Navigate to your `.env` file, find `ALLOWED_HOSTS` and add your `<ip_server_address>`
+3. Copy the content of the `simple_env_config.env` file that is inside the `truck_signs_designs/settings` folder into a `.env` file. Open your `.env` file, find `ALLOWED_HOSTS` and add your `<ip_server_address>`
+
+> **_NOTE:_** Same step as before but this time on you V-Server.
 
 ```
 # .env
