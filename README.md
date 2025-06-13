@@ -103,7 +103,7 @@ To restart the application, just run the `start.sh` script again.
 
 1. Login to your V-Server
 ```
-    ssh -i ~/.ssh/<name_of_your_key25519> <your_user_name>@<ip_server_address>
+ssh -i ~/.ssh/<name_of_your_key25519> <your_user_name>@<ip_server_address>
 ```
 2. Create a new folder in your `home` directory and clone this repository there
 ```
