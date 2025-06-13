@@ -107,7 +107,7 @@ ssh -i ~/.ssh/<name_of_your_key25519> <your_user_name>@<ip_server_address>
 ```
 2. Create a new folder in your `home` directory and clone this repository there
 ```
-    mkdir -p ~/projects
+mkdir -p ~/projects
     cd ~/projects
     git clone git@github.com:MarcosChavez09/truck_signs_api.git
 ```
