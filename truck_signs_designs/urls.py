@@ -18,10 +18,16 @@ from django.urls import path
 from django.conf.urls import url,include
 from django.conf import settings
 from django.conf.urls.static import static
-
+from django.views.generic import RedirectView
+from django.views.static import serve
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # url(r'^$', HomePageAPI, name='home'),
+    path('', RedirectView.as_view(url='truck-signs/', permanent=False)),
     url(r'^truck-signs/', include('backend.urls', namespace='trucks-signs-namespace')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+# Serve static files
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
