@@ -58,7 +58,7 @@ You can log in as admin with the provided values in `/truck_signs_designs/settin
 
 ## Usage
 
-### Create a docker containers.
+### Create docker containers
 
 To create the docker containers use the `start.sh` script, type the following in your terminal:
 
