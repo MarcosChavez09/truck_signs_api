@@ -108,7 +108,7 @@ ssh -i ~/.ssh/<name_of_your_key25519> <your_user_name>@<ip_server_address>
 2. Create a new folder in your `home` directory and clone this repository there
 ```
 mkdir -p ~/projects
-    cd ~/projects
+cd ~/projects
     git clone git@github.com:MarcosChavez09/truck_signs_api.git
 ```
 3. Add your server IP to the `simple_env_config.env` file that is inside the `truck_signs_designs/settings` folder. Find `ALLOWED_HOSTS` and add your `<ip_server_address>`.
